@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>235 Project 2</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css"/>
+    <script src="js/main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>Perfect Pokemon</h1>
+        <p>Helping you find the perfect Pokemon for you!</p>
+    </header>
+
+    <main>
+        <div id="search">
+            <select id="type">
+                <option value="none">Choose a Type!</option>
+                <option value="normal">Normal</option>
+                <option value="fighting">Fighting</option>
+                <option value="flying">Flying</option>
+                <option value="poison">Poison</option>
+                <option value="ground">Ground</option>
+                <option value="rock">Rock</option>
+                <option value="bug">Bug</option>
+                <option value="ghost">Ghost</option>
+                <option value="steel">Steel</option>
+                <option value="fire">Fire</option>
+                <option value="water">Water</option>
+                <option value="grass">Grass</option>
+                <option value="electric">Electric</option>
+                <option value="psychic">Psychic</option>
+                <option value="fairy">Fairy</option>
+                <option value="ice">Ice</option>
+                <option value="dragon">Dragon</option>
+                <option value="dark">Dark</option>
+            </select>
+
+            <select id="gender">
+                <option value="none">Choose a Gender!</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="genderless">Genderless</option>
+            </select>
+
+            <select id="color">
+                <option value="none">Choose a Color!</option>
+                <option value="black">Black</option>
+                <option value="blue">Blue</option>
+                <option value="brown">Brown</option>
+                <option value="gray">Gray</option>
+                <option value="green">Green</option>
+                <option value="pink">Pink</option>
+                <option value="purple">Purple</option>
+                <option value="red">Red</option>
+                <option value="white">White</option>
+                <option value="yellow">Yellow</option>
+            </select>
+            
+            <button type="button" id="searchbtn" class="blue">Search!</button>
+            <p>(double click the search button!!)</p>
+        </div>
+        
+        <div id="status">Ready to search!</div>
+
+        <div id="results">
+            <p>No Results!</p>
+        </div>
+    </main>
+
+<!--     <div id="info">
+        
+            - this div will include:
+                    - pokemon image
+                    - pokemon name
+                    - region
+        
+    </div> -->
+
+    <footer>
+        <p>Jabrecia Washington 2021 | Powered By PokeAPI</p>
+        <p><a href="documentation.html" target="_blank">Documentation</a></p>
+    </footer>
+
+</body>
+
+<script>
+    const chosenType = document.querySelector("#type");
+    const chosenGender = document.querySelector("#gender");
+    const chosenColor = document.querySelector("#color");
+    const prefix = "jlw4958-";
+    const typeKey = prefix + "type"
+    const genderKey = prefix + "gender"
+    const colorKey = prefix + "color";
+
+    const storedType = localStorage.getItem(typeKey);
+    const storedGender = localStorage.getItem(genderKey)
+    const storedColor = localStorage.getItem(colorKey);
+
+    if (storedType){
+        chosenType.querySelector(`option[value='${storedType}']`).selected = true;
+    }
+    if (storedGender){
+        chosenGender.querySelector(`option[value='${storedGender}']`).selected = true;}
+
+    if (storedColor){
+        chosenColor.querySelector(`option[value='${storedColor}']`).selected = true;
+    }
+
+    chosenType.onchange = e=>{ localStorage.setItem(typeKey, e.target.value); };
+    chosenGender.onchange = e=>{ localStorage.setItem(genderKey, e.target.value); };
+    chosenColor.onchange = e=>{ localStorage.setItem(colorKey, e.target.value); };
+</script>
+
+</html>

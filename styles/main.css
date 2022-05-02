@@ -1,0 +1,16 @@
+body {background-color: #FFDE00;}
+main, header {background-color: #ffef85; border: 1px solid #3B4CCA;}
+h1 {color: #FF0000; font-family: 'Press Start 2P', cursive;}
+p {color: #3B4CCA;}
+p, footer , #status {font-family: 'Montserrat Alternates', sans-serif;}
+header, main, #results {margin: 0 auto; text-align: center; width: 90%;}
+#status {padding-top: 10px; padding-bottom: 10px; color: #FF0000}
+#results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    padding-bottom: 30px;
+
+}
+#search {padding-top: 10px;}
+.result {border: 1px solid #3B4CCA; background-color: #FFDE00;}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/main.js"></script>
+    <title>Project 2 Documentation</title>
+</head>
+<body>
+    <header>
+        <h1>Project 2 Documentation</h1>
+    </header>
+
+    <main>
+        <h2>What we want:</h2>
+        <ul>
+            <li>Present the user with their “perfect pokemon”</li>
+        </ul>
+
+        <h2>How will we do this:</h2>
+        <ul>
+            <li>We need to look at the traits of the pokemon and give the user options to choose the traits they like. Then, we’ll look at the pokemon to see which one matches, if any.</li>
+        </ul>
+
+        <h2>What traits should we focus on?</h2>
+        <ul>
+            <li>The original idea was to focus on nature and gender, but I’ve been told I should include more options. The PokeAPI gives us the following endpoints:
+                <ul>
+                    <li>Abilities</li>
+                    <li>Pokeathlon stats</li>
+                    <li>Locations</li>
+                    <li>Colors</li>
+                    <li>Forms</li>
+                    <li>Habitats</li>
+                    <li>Shapes</li>
+                    <li>Species</li>
+                </ul>
+            </li>
+
+            <li>I do need to note, however, that as far as I know, I need to know the names of each thing in these categories in order to send the request to the endpoint. Basically, I need to manually type out the names of the shapes, for example, have the user choose a shape name, then send that name to the server, then get the name of the pokemon back.</li>
+            <li>Update: nature is too broad since pokemon do not have natures specific to their species, so we’ll have to use a different attribute. I’ll go with type instead</li>
+        </ul>
+
+        <h2>Okay, let’s get into the details, step by step:</h2>
+        <ul>
+            <li>First, the user chooses a trait from the dropdown menu (this will work the same for each one)
+                <ul>
+                    <li>We should make the name of the dropdown the name of the endpoint, so then we can just make a function that makes a generic request based on the name and the item chosen</li>
+                </ul>
+            </li>
+            <li>After choosing the items, make the server request for the information
+                <ul>
+                    <li>If they choose none for one of them, just don’t make a request. Basically, it will go to the endpoint and it won’t request anything OR it just won’t go to the endpoint (which would be ideal)</li>
+                    <li>We’ll have to make sure that the chosen pokemon match each of the criteria. My mind is saying that we could get all of each type and compare them all. For example:
+                        <ul>
+                            <li>Gender: female color: blue nature: timid</li>
+                            <li>So I think I should find every blue pokemon, see which ones are female, then see which ones are timid</li>
+                            <li>I could also do nature first, so I’d find every timid pokemon, then find every timid blue pokemon, then find every timid blue female pokemon
+                                <ul>
+                                    <li>This one sounds a bit better because there will probably be less information to parse through (instead of looking at every female pokemon since there are a lot, look at every timid one, and there won’t be as many)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>The information we display should (ideally) be the following:
+                <ul>
+                    <li>Pokemon photo (if possible)</li>
+                    <li>Pokemon name (of course)</li>
+                    <li>Pokemon region</li>
+                    <li>Possibly the moves</li>
+                    <li>If anything else, maybe some stats, but that can come later</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>How are we going to display it all?</h2>
+        <ul>
+            <li>The lower half of the page could and should be dedicated to the results, so we can display each one in a div and just put the character info inside of the div for now, later we can have the info pop up in a separate div on hover or click</li>
+        </ul>
+
+        <h2>What controls will there be?</h2>
+        <ul>
+            <li>The choice dropdowns (3-5)</li>
+            <li>Search button</li>
+            <li>If we want, we can include a bar to search for names, but that kind of defeats the purpose of the site finding pokemon for you</li>
+            <li>Ideally the option to click on the pokemon name in the results and be taken to a link to the wiki page about the pokemon (we’ll have to look into that later, too)</li>
+            <li>If possible, a reset button that empties out the results area</li>
+        </ul>
+
+        <h2>Okay, semantically, what’s going on. How does our HTML look and what do we need?:</h2>
+        <ul>
+            <li>Of course, we need to make sure we link to our css and js files (already implemented)</li>
+            <li>We’ll also add the link to the font we choose (later on whenever it happens)</li>
+            <li>Here are the areas we’ll need:
+                <ul>
+                    <li>An area to hold the title (header)
+                        <ul>
+                            <li>Should really just be the title, we could add a background image if we wanted to though)</li>
+                        </ul>
+                    </li>
+                    <li>An area to hold all of the search tools (div/section)
+                        <ul>
+                            <li>Dropdowns, search button</li>
+                        </ul>
+                    </li>
+                    <li>An area to hold the results (div/section)
+                        <ul>
+                            <li>Div of divs</li>
+                        </ul>
+                    </li>
+                    <li>An area for each result (div)
+                        <ul>
+                            <li>Name, image, region, idk something else if we get to that point</li>
+                        </ul>
+                    </li>
+                    <li>An area to hold my name + reference to the API (bc it looks cool to say “powered by PokeAPI”) (footer)</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Okay, what else do we need. Styles?</h2>
+        <ul>
+            <li>The pokemon color palette seems to rely heavily on primary colors (red, blue, yellow) so we should focus on those in our visual design</li>
+            <li>I’m thinking white text with a black border for the title (also two different fonts for the title and the content), and the rest can either be black text or very dark blue text</li>
+            <li>The background should probably be yellow, but we can add red accents to things, same with the blue</li>
+            <li>Maybe the text can just be blue, then we only have to worry about adding red accents</li>
+        </ul>
+    </main>
+</body>
+</html>
